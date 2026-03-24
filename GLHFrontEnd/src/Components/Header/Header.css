@@ -1,0 +1,93 @@
+.header-container {
+    background-color: var(--primary-color);
+    height: 120px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+
+    /* Customizing logo image */
+    >img {
+        height: 100px;
+        width: 100px;
+        border-radius: 500px;
+    }
+
+    >.header-navigation-btns {
+
+        >a {
+            /* This customizes the link tags */
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 15px;
+            background-color: var(--secondary-color);
+            padding: 20px 30px;
+        }
+    }
+
+}
+
+/* Displays mobile header */
+@media only screen and (max-width: 749px) {
+    .desktop {
+        display: none;
+    }
+
+    .Mobile {
+        display: flex;
+    }
+
+}
+
+/* Hides mobile header */
+@media only screen and (min-width: 749px) {
+    .desktop {
+        display: flex;
+    }
+
+    .Mobile {
+        display: none;
+    }
+
+}
+
+
+/* Customizes the menu icon and rotates it upon click (with help from jsx) */
+.menuIcon{
+    cursor: pointer;
+}
+.open {
+    transform: rotate(90deg);
+}
+
+/* Displays navigation buttons */
+.mobile-buttons-view {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 120px;
+    left: 0px;
+    right: 0;
+    height: calc(100vh - 100%);
+    justify-content: center;
+    align-items: center;
+
+    >.header-navigation-btns {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        margin: 0 auto;
+        text-align: center;
+    
+        >a {
+            /* This customizes the link tags */
+            text-decoration: none;
+            color: var(--text-color);
+            margin: 15px;
+            background-color: var(--secondary-color);
+            padding: 20px 30px;
+        }
+    
+    }
+}

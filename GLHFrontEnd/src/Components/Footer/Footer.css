@@ -1,0 +1,30 @@
+.footer-container {
+    background-color: var(--primary-color);
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    justify-content: space-evenly;
+    padding: 15px;
+    color: var(--text-color);
+
+    /* rem is used to make font size fit the to users screen perfectly */
+    >h2 {
+        font-size: 1.5rem;
+    }
+
+    >.LinkBox {
+        display: flex;
+        flex-direction: column;
+        >h3 {
+            font-size: 1rem;
+        }
+
+        >a {
+            font-size: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+    }
+}

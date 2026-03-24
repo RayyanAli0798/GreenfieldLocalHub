@@ -1,0 +1,22 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Our variables */
+  color-scheme: light dark;
+    --bg: light-dark( #ECEFEF,#1F1C1C);
+    --primary-color: light-dark(#82A186 , #5F725F);
+    --secondary-color: light-dark(#FFF9E6,#1F2A24 );
+    --text-color: light-dark(black, white);
+  
+}
+*, *::before, *::after { 
+  margin: 0; 
+  box-sizing: border-box;   
+  }
+
