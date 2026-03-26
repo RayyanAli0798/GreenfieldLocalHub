@@ -16,11 +16,11 @@
         }
     }
 
-    >.form-container{
+    >.form-container {
         margin: 0 auto;
     }
 
-    .account-box-container{
+    .account-box-container {
         display: flex;
         flex-direction: column;
         min-height: 400px;
@@ -30,30 +30,77 @@
         background-color: var(--secondary-color);
         padding: 25px;
         border-radius: 20px;
-        
-        >form{
+
+        >form {
             display: flex;
             flex-direction: column;
-            justify-content: start;
+            justify-content: space-around;
             gap: 20px;
             flex-wrap: nowrap;
-            
-            
-            >label{
+
+
+            >label {
                 display: flex;
                 flex-wrap: nowrap;
                 color: var(--text-color);
-                
-            >input{
-                width: 50%;
-                margin-left: auto;
+
+                >input {
+                    width: 50%;
+                    margin-left: auto;
+                    background-color: var(--primary-color);
+                    border: none;
+                    border-radius: 20px;
+
+                }
+
+                >select {
+                    width: 50%;
+                    margin-left: auto;
+                    background-color: var(--primary-color);
+                    border: none;
+                    border-radius: 20px;
+
+                    >option {
+                        width: 50%;
+                        margin-left: auto;
+                        background-color: var(--primary-color);
+                        border: none;
+                        border-radius: 20px;
+                    }
+                }
+            }
+
+            >button{
+                width: fit-content;
+                margin: 0 auto;
                 background-color: var(--primary-color);
+                padding: 10px;
+                border-radius: 25px;
                 border: none;
-                border-radius: 20px;
-                
+
+                margin-top: 25px;
             }
-            }
+
+        }
+
+        >.form-changer{
+            cursor: pointer;
+            text-decoration: underline;
         }
     }
 
+}
+.error-message{
+    color: red;
+    font-weight: 800;
+}
+
+@media only screen and (max-width: 810px){
+    .image-container{
+        display: none;
+    }
+
+    .account-box-container {
+        margin: 10px;
+    }
 }

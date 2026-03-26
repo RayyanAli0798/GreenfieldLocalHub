@@ -9,7 +9,7 @@ import { useState } from "react"
 
 export default function Header() {
 
-    const { signedInStatus, userRole, setUserRole, setSignedInStatus } = useUser()
+    const { signedInStatus, userRole, setUserRole, setSignedInStatus, setUserID } = useUser()
 
     let defaultButtons = (
         <nav className="header-navigation-btns">
@@ -23,14 +23,14 @@ export default function Header() {
             <Link to="/"> Home </Link>
             <Link to="/Stock"> Stock Control </Link>
             <Link to="/products"> Products </Link>
-            <Link to="/" onClick={() => { setSignedInStatus(false), setUserRole("") }}> Logout </Link>
+            <Link to="/" onClick={() => { etSignedInStatus(false), setUserRole(""), setUserID("") }}> Logout </Link>
         </nav>
     )
     let ConsumerButtons = (
         <nav className="header-navigation-btns">
             <Link to="/"> Home </Link>
             <Link to="/products"> Products </Link>
-            <Link to="/" onClick={() => { setSignedInStatus(false), setUserRole("") }}> Logout </Link>
+            <Link to="/" onClick={() => { setSignedInStatus(false), setUserRole(""), setUserID("") }}> Logout </Link>
         </nav>
     )
 

@@ -1,9 +1,11 @@
 import "./AccountPage.css"
 import AccountPageImage from "../../assets/AccountPageImage.jpg"
 import { useState } from "react"
+import { useNavigate } from "react-router"
+import { useUser } from "../../Contexts/UserContexts"
+import axios from "axios"
 
 export default function AccountPage() {
-
 
     return (
         <div className="account-page-container">
@@ -17,50 +19,139 @@ function AccountComponent() {
 
     const [showRegister, setShowRegister] = useState(true)
 
-    function toggle() {
+    function toggleForm() {
         setShowRegister(!showRegister)
     }
+
     return (
         <>
-            <SignUpBox toggle={toggle} />
+            {showRegister ? <SignUpBox toggle={toggleForm} /> : <SignInBox toggle={toggleForm} />}
         </>
     )
 }
 
-function SignUpBox(toggle) {
+function SignUpBox({ toggle }) {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [useRole, setUserRole] = useState("Consumer")
+    const [accountRole, setAccountRole] = useState("Consumer")
     const [error, setError] = useState("")
+    const navigate = useNavigate()
+    const { setSignedInStatus, setUserRole, setUserID } = useUser()
 
-    function StoringSignUp() {
-        e.preventDefault
+    function StoringSignUp(event) {
+        event.preventDefault()
+        setError("")
+
+        const url = `http://127.0.0.1:8001/accounts/creating_account`
+        let userDetails = {
+            "email": email,
+            "password": password,
+            "confirm_password": confirmPassword,
+            "role": accountRole
+        }
+
+        function handleSuccess(res) {
+            setUserRole(accountRole)
+            setSignedInStatus(true)
+            setUserID(res?.data)
+            navigate("/")
+        }
+        function handleError(err) {
+            setError(err.response?.data?.detail)
+        }
+
+        axios.post(url, userDetails)
+            .then(handleSuccess)
+            .catch(handleError)
 
     }
-
-
 
     return (
         <>
             <div className="account-box-container">
                 <h1> Sign up! </h1>
 
-                <form>
+                <form onSubmit={StoringSignUp}>
                     <label> Email:
                         <input type="email" onChange={(e) => setEmail(e.target.value)} /></label>
                     <label> Password:
-                        <input type="password" onChange={(e) => setEmail(e.target.value)} /></label>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} /></label>
                     <label> Confirm Password:
-                        <input type="password" onChange={(e) => setEmail(e.target.value)} /></label>
+                        <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} /></label>
                     <label> Role:
-                        <input type="email" onChange={(e) => setEmail(e.target.value)} /></label>
+                        <select onChange={(e) => setAccountRole(e.target.value)} required>
+                            <option hidden disabled selected> </option>
+                            <option value="Producer" > Producer </option>
+                            <option value="Consumer" > Consumer </option>
+                        </select>
+                    </label>
+                    <button type="submit" > Submit </button>
 
-                    <button type="submit"> Submit </button>
+                    {error ? <h3 className="error-message"> {error} </h3> : null}
                 </form>
 
-                Click here if you wish to change forms
+                <p className="form-changer" onClick={toggle}> Click here if you wish to change forms </p>
+            </div>
+        </>
+    )
+
+
+}
+
+
+
+function SignInBox({ toggle }) {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+    const navigate = useNavigate()
+    const { setSignedInStatus, setUserRole, setUserID } = useUser()
+
+    function StoringSignIn(event) {
+        event.preventDefault()
+        setError("")
+
+        const url = `http://127.0.0.1:8001/accounts/login`
+        let userDetails = {
+            "email": email,
+            "password": password,
+        }
+
+        function handleSuccess(res) {
+            setUserRole(res?.data?.role)
+            setSignedInStatus(true)
+            setUserID(res?.data?.user_ID)
+            navigate("/")
+        }
+        function handleError(err) {
+            setError(err.response?.data?.detail)
+        }
+
+        axios.post(url, userDetails)
+            .then(handleSuccess)
+            .catch(handleError)
+
+    }
+
+    return (
+        <>
+            <div className="account-box-container">
+                <h1> Sign In! </h1>
+
+                <form onSubmit={StoringSignIn}>
+                    <label> Email:
+                        <input type="email" onChange={(e) => setEmail(e.target.value)} /></label>
+                    <label> Password:
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} /></label>
+                    <button type="submit" > Submit </button>
+
+                    {error ? <h3 className="error-message"> {error} </h3> : null}
+                </form>
+
+                <p className="form-changer" onClick={toggle}> Click here if you wish to change forms </p>
             </div>
         </>
     )

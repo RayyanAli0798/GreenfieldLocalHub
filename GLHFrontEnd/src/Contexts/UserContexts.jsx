@@ -5,11 +5,11 @@ export const userContext = createContext();
 export function UserProvider({ children }) {
 
     const [signedInStatus, setSignedInStatus] = useState(true)
-    const [userRole, setUserRole] = useState("Producer")
-
+    const [userRole, setUserRole] = useState("")
+    const [userID, setUserID] = useState("")
     return (
 
-        <userContext.Provider value={{ signedInStatus, setSignedInStatus, userRole, setUserRole }}>
+        <userContext.Provider value={{ signedInStatus, setSignedInStatus, userRole, setUserRole, setUserID, userID }}>
             {children}
         </userContext.Provider>
     )
