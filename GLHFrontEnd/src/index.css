@@ -13,10 +13,10 @@
     --primary-color: light-dark(#82A186 , #5F725F);
     --secondary-color: light-dark(#FFF9E6,#1F2A24 );
     --text-color: light-dark(black, white);
-  
+    --stock-background: light-dark(#B6B6B6, #363636);
+    
 }
 *, *::before, *::after { 
   margin: 0; 
   box-sizing: border-box;   
   }
-

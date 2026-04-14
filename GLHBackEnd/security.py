@@ -1,6 +1,6 @@
 from passlib.context import CryptContext
 
-
+#using argon 2 as our hashing algorithm
 pwd_context = CryptContext(
     schemes=["argon2"],
     deprecated = "auto"

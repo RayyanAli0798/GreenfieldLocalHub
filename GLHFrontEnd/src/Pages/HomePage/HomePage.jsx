@@ -70,7 +70,6 @@ function MemberBiographyBox({ name, role, text, image }) {
 
 function SlideshowSection() {
 
-
     return (
         <>
             <div className="slideshow-container">
@@ -95,16 +94,16 @@ function SlideshowSection() {
                 </div>
 
                 {/* <!-- Next and previous buttons --> */}
-                <a className="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a className="next" onclick="plusSlides(1)">&#10095;</a>
+                <a className="prev" onClick="plusSlides(-1)">&#10094;</a>
+                <a className="next" onClick="plusSlides(1)">&#10095;</a>
             </div>
             <br />
 
             {/* <!-- The dots/circles --> */}
             <div className="text-align:center">
-                <span className="dot" onclick="currentSlide(1)"></span>
-                <span className="dot" onclick="currentSlide(2)"></span>
-                <span className="dot" onclick="currentSlide(3)"></span>
+                <span className="dot" onClick="currentSlide(1)"></span>
+                <span className="dot" onClick="currentSlide(2)"></span>
+                <span className="dot" onClick="currentSlide(3)"></span>
             </div>
         </>
     )

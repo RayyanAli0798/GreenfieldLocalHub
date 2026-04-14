@@ -5,11 +5,10 @@ export const BasketContext = createContext();
 export function BasketProvider({ children }) {
 
     const [currentBasket, setCurrentBasket] = useState("")
-    const [newBasketItem, setnewBasketItem] = useState("")
 
     return (
 
-        <BasketContext.Provider value={{ newBasketItem, setnewBasketItem}}>
+        <BasketContext.Provider value={{ currentBasket, setCurrentBasket}}>
             {children}
         </BasketContext.Provider>
     )

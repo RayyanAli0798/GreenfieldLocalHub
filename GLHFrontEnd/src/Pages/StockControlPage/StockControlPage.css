@@ -2,9 +2,9 @@
     background-color: var(--primary-color);
 
     height: fit-content;
-    width: 90vw;
-    min-width: fit-content;
-    margin: 0 auto;
+    width: 80%;
+    min-width: 60vw;
+    margin: 10px auto;
     padding: 25px;
 
 }
@@ -13,6 +13,7 @@
     text-align: center;
     color: var(--primary-color);
     text-decoration: underline;
+    height: fit-content;
 }
 
 .Dashboard-bottom {
@@ -22,19 +23,21 @@
     gap: 10px;
     margin: 0 auto;
     min-width: 100%;
-    
+
 }
 
-.stock-managment{
+.stock-managment {
     background-color: var(--secondary-color);
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 200px;
 
 
-    
+
 }
-.bottom-products{
+
+.bottom-products {
     background-color: var(--secondary-color);
     margin: 10px 0px;
     min-height: 200px;
@@ -42,17 +45,17 @@
     overflow: auto;
 }
 
-.dashboard-title-bar{
+.dashboard-title-bar {
     display: flex;
     width: 100%;
     height: 35px;
     align-items: center;
-    font-size: 0.9rem;
     padding: 20px 10px;
 
-    >h2{
+    >h2 {
         margin: 0 auto;
         text-decoration: underline;
+        font-size: 1.5rem;
 
     }
 }
@@ -68,7 +71,7 @@
     height: 35px;
     align-self: center;
     cursor: pointer;
-    
+
 }
 
 .add-product-box {
@@ -159,11 +162,81 @@
     }
 }
 
-@media only screen and (max-width: 650px){
+@media only screen and (max-width: 650px) {
     .Dashboard-bottom {
         flex-direction: column;
     }
+
     .producer-dashboard {
         margin-bottom: 10px;
     }
+}
+
+.stock-inine {
+    max-width: 90%;
+    width: 100%;
+    margin: 10px auto;
+    max-height: 50px;
+    display: flex;
+    border: 1px solid black;
+    overflow-y: auto;
+    min-width: 450px;
+    background-color: var(--stock-background);
+}
+
+.stock-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.Data-area {
+    display: flex;
+    margin-right: auto;
+    gap: 30px;
+    padding: 5px;
+}
+
+.icons-section {
+    display: flex;
+    margin-left: auto;
+    gap: 30px;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 440px) {
+    .dashboard-title-bar {
+        >h2{
+            font-size: 1rem;}
+    }
+}
+
+.products-container{
+    width: 98%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.Warning{
+    color: red;
+    text-align: center;
+    font-weight: 500;
+    font-size: large;
+}
+
+.checkbox-inline{
+    display: flex;
+    justify-content: space-between;
+
+    max-width: 95%;
+    margin: 10px auto;
+    background-color: var(--stock-background);
+    border-radius: 10px;
+    padding: 5px 15px;
+    
+
+}
+
+.order-data{
+    display: flex;
+    
 }

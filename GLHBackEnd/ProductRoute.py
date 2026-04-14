@@ -4,9 +4,11 @@ from typing import Literal
 from db import db
 import uuid
 
+# creating our route & database Collection
 products_router = APIRouter()
 products = db["products"]
 
+#basemodels
 class product(BaseModel):
     product_name: str
     quantity_avaliable: int
@@ -14,7 +16,13 @@ class product(BaseModel):
     producers_ID: str
     orderType: Literal["Both", "DeliveryOnly","CollectionOnly"]
 
+class update(BaseModel):
+    productID: str
+    quantity_avaliable: int
+    cost_per_unit: float
+    orderType: Literal["Both", "DeliveryOnly","CollectionOnly"]
 
+#routes
 @products_router.post("/adding_product")
 def adding_products(productDetails: product):
     productInformation = productDetails.model_dump()
@@ -33,5 +41,29 @@ def adding_products(productDetails: product):
 
 @products_router.get("/getting_products")
 def getting_products():
-    
     products_list = list(products.find())
+    for product in products_list:
+        product["_id"] = str(product["_id"]) # making object ID readable
+    return products_list
+
+@products_router.delete("/deleting_product")
+def deletingAccount(productID: str):
+    delete = products.delete_one({"product_ID": productID})
+    return  "success"
+
+@products_router.patch("/publishing_product")
+def listing_product(productID: str):
+    updateData =  {"is_listed": True} #making it viewable for any user
+    update = products.update_one(
+        {"product_ID": productID}, 
+        {"$set": updateData}
+    )
+    return "success"
+@products_router.patch("/updating_product_details")
+def updating_detail(updateProduct : update):
+    updatingDetails = updateProduct.model_dump() 
+    update = products.update_one(
+        {"product_ID": updatingDetails["productID"]},
+        {"$set": updatingDetails}
+    )
+    return "success"

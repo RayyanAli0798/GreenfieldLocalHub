@@ -23,7 +23,7 @@ export default function Header() {
             <Link to="/"> Home </Link>
             <Link to="/Stock"> Stock Control </Link>
             <Link to="/products"> Products </Link>
-            <Link to="/" onClick={() => { etSignedInStatus(false), setUserRole(""), setUserID("") }}> Logout </Link>
+            <Link to="/" onClick={() => { setSignedInStatus(false), setUserRole(""), setUserID("") }}> Logout </Link>
         </nav>
     )
     let ConsumerButtons = (
