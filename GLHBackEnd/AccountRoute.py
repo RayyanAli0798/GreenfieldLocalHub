@@ -23,7 +23,7 @@ class Register(BaseModel):
 class UpdateUser(BaseModel):
     email:str
     password:str
-    userID:str
+    user_ID:str
 
 # validation functions
 def upper_case_check(password):

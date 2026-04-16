@@ -70,37 +70,51 @@
                 }
             }
 
-            >button{
-                width: fit-content;
-                margin: 0 auto;
-                background-color: var(--primary-color);
-                padding: 10px;
-                border-radius: 25px;
-                border: none;
 
-                margin-top: 25px;
-            }
 
         }
 
-        >.form-changer{
+        >.form-changer {
             cursor: pointer;
             text-decoration: underline;
         }
     }
 
 }
-.error-message{
+
+.error-message {
     color: red;
     font-weight: 800;
 }
 
-@media only screen and (max-width: 810px){
-    .image-container{
+@media only screen and (max-width: 810px) {
+    .image-container {
         display: none;
     }
 
     .account-box-container {
         margin: 10px;
     }
+}
+
+.delete-account {
+    position: absolute;
+    top: 90%;
+    right: 2.5%;
+    padding: 25px;
+    font-size: large;
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.submit {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+
+    margin-top: 25px;
 }

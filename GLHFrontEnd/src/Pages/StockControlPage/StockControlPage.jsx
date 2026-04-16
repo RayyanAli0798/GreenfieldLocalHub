@@ -9,6 +9,7 @@ import DeleteIcon from "../../assets/DeleteIcon.png"
 import PublishIcon from "../../assets/PublishIcon.svg"
 import { useProducts } from "../../Contexts/ProductContext"
 import { useEffect } from "react"
+import HistoryIcon from "../../assets/HistoryIcon.png"
 
 export default function StockControlPage() {
 
@@ -77,7 +78,7 @@ function ListedProducts() {
     return (
         <div className="bottom-products">
             <span className="dashboard-title-bar">
-                <span className="empty-div-stock" /><h2> Listed Products  </h2> <img src={plusIcon} className="adding-stock-icon" />
+                <span className="empty-div-stock" /><h2> Listed Products  </h2> 
             </span>
             <div className="products-container">
                 {
@@ -108,7 +109,7 @@ function OrdersToComplete() {
     return (
         <div className="bottom-products">
             <span className="dashboard-title-bar">
-                <span className="empty-div-stock" /><h2> To-do  </h2> <img src={plusIcon} className="adding-stock-icon" />
+                <span className="empty-div-stock" /><h2> To-do  </h2> <img src={HistoryIcon} className="adding-stock-icon" />
             </span>
 
             {
@@ -323,21 +324,21 @@ function Checkbox({ name, quantity, paid, orderID, changingOrderList, currentOrd
                 changingOrderList(
                     currentOrderList.filter((product) => product["order_id"] != orderID))
             })
+
+            .catch(() => {
+                alert("error")
+            })
     }
-        .catch ( () => {
-        alert("error")
-    })
-}
-return (
-    <div className="checkbox-inline">
-        <div className="order-data">
-            <p className="checkbox-title"> {name} </p>
-            <p className="checkbox-title"> {quantity} </p>
-            <p className="checkbox-title"> {paid} </p>
+    return (
+        <div className="checkbox-inline">
+            <div className="order-data">
+                <p className="checkbox-title"> {name }  </p>
+                <p className="checkbox-title"> Quantity: {quantity}  </p>
+                <p className="checkbox-title"> Price: £{paid}  </p>
+            </div>
+            <input type="checkbox" onClick={orderComplete} />
         </div>
-        <input type="checkbox" onClick={orderComplete} />
-    </div>
-)
+    )
 }
 
 function OrderHistory() {

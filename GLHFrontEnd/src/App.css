@@ -12,11 +12,12 @@
   position: fixed;
   max-width: 100%;
   min-width: 100%;
+  z-index: 10000;
 }
 
 .main-section {
   /* Keeps main content in the middle, pushing the footer at the end of the page.  */
   flex: 1;
   margin-top: 125px;
-
+  z-index: 1;
 }

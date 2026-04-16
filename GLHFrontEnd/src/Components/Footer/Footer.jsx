@@ -13,8 +13,8 @@ export default function Footer() {
             <div className="LinkBox">
                 <h3> Useful Links </h3>
                 <Link to="/"> Home </Link>
-                <Link to="/products"> Products </Link>
-                <Link to="/accounts"> Accounts </Link>
+                <Link to="/Products"> Products </Link>
+                <Link to="/Accounts"> Accounts </Link>
             </div>
 
             {/* Link box 2 */}
