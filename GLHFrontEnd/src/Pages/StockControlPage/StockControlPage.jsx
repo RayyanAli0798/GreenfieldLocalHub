@@ -1,5 +1,5 @@
 import "./StockControlPage.css"
-import plusIcon from "../../assets/plusIcon.png"
+import PlusIcon from "../../assets/PlusIcon.png"
 import { useState } from "react"
 import CloseIcon from "../../assets/CloseIcon.webp"
 import axios from "axios"
@@ -50,13 +50,13 @@ function StockManagment() {
             {openAddProduct ? <AddProductBox toggle={toggleProduct} /> : null}
             <div className="stock-managment">
                 <span className="dashboard-title-bar">
-                    <h2> Stock Managment  </h2> <img src={plusIcon} onClick={toggleProduct} className="adding-stock-icon" />
+                    <h2> Stock Managment  </h2> <img src={PlusIcon} onClick={toggleProduct} className="adding-stock-icon" />
                 </span>
                 <div className="products-container">
                     {
                         producerProducts.map((product, key) => {
                             return (
-                                < StockInlineDisplay name={product["product_name"]} cost={product["cost_per_unit"]} quantity={product["quantity_avaliable"]} publish={true} modify={true} ProductID={product["product_ID"]} />
+                                < StockInlineDisplay key={product["product_ID"]} name={product["product_name"]} cost={product["cost_per_unit"]} quantity={product["quantity_avaliable"]} publish={true} modify={true} ProductID={product["product_ID"]} />
                             )
                         })
                     }
