@@ -7,12 +7,12 @@ from OrderRoute import order_router
 app = FastAPI() 
 
 #this will make it ONLY this port can access or send data to the backend
-app.add_middleware( 
-    CORSMiddleware, 
-    allow_origins=["https://greenfieldlocalhub-hn5p.onrender.com/"], 
-    allow_methods=["*"], 
-    allow_headers=["*"], 
-) 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://greenfieldlocalhub-hn5p.onrender.com"],  
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # the below 3 sections include our files on the main api router (so they can be accessed)
 
