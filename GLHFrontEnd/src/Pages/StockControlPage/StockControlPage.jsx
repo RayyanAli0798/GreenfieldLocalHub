@@ -148,7 +148,7 @@ function AddProductBox({ toggle }) {
 
     function sendingProductData(event) {
         event.preventDefault()
-        const url = `http://127.0.0.1:8001/products/adding_product`
+        const url = `https://greenfieldlocalhub.onrender.com/products/adding_product`
 
         //data to send
         let productInfo = {
@@ -207,7 +207,7 @@ function StockInlineDisplay({ name, quantity, cost, publish, modify, ProductID }
     const [modifySection, setModify] = useState(false)
     const { setProducerProducts, producerProducts } = useProducts()
     function deleteProduct() {
-        const url = `http://127.0.0.1:8001/products/deleting_product?productID=${ProductID}`
+        const url = `https://greenfieldlocalhub.onrender.com/products/deleting_product?productID=${ProductID}`
         axios.delete(url)
             .then(() => {
                 console.log("Successfully deleted Product")
@@ -220,7 +220,7 @@ function StockInlineDisplay({ name, quantity, cost, publish, modify, ProductID }
             })
     }
     function PublishProduct() {
-        const url = `http://127.0.0.1:8001/products/publishing_product?productID=${ProductID}`
+        const url = `https://greenfieldlocalhub.onrender.com/products/publishing_product?productID=${ProductID}`
         axios.patch(url)
             .then(() => {
                 console.log("Successfully listed Product")
@@ -267,7 +267,7 @@ function ModifyProduct({ toggle, name1, quantity1, cost1, PID }) {
 
     function sendingProductData(event) {
         event.preventDefault()
-        const url = `http://127.0.0.1:8001/products/updating_product_details`
+        const url = `https://greenfieldlocalhub.onrender.com/products/updating_product_details`
 
         //data to send
         let productInfo = {
@@ -325,7 +325,7 @@ function ModifyProduct({ toggle, name1, quantity1, cost1, PID }) {
 
 function Checkbox({ name, quantity, paid, orderID, changingOrderList, currentOrderList }) {
     function orderComplete() {
-        const url = `http://127.0.0.1:8001/orders/updating_status?orderID=${orderID}`
+        const url = `https://greenfieldlocalhub.onrender.com/orders/updating_status?orderID=${orderID}`
         axios.patch(url)
             .then(() => {
                 changingOrderList(

@@ -46,7 +46,7 @@ function SignUpBox({ toggle }) {
         event.preventDefault() //stops page from refreshing
         setError("")
 
-        const url = `http://127.0.0.1:8001/accounts/creating_account`
+        const url = `https://greenfieldlocalhub.onrender.com/accounts/creating_account`
         let userDetails = {
             "email": email,
             "password": password,
@@ -116,7 +116,7 @@ function SignInBox({ toggle }) {
         event.preventDefault() // stops refreshing
         setError("")
 
-        const url = `http://127.0.0.1:8001/accounts/login`
+        const url = `https://greenfieldlocalhub.onrender.com/accounts/login`
         let userDetails = {
             "email": email,
             "password": password,

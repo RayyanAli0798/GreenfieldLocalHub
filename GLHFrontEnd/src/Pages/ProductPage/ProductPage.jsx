@@ -214,7 +214,7 @@ function BasketPopup() {
     const navigate = useNavigate()
 
     function sendingOrder(name, quantity, cost, productID, producerID) {
-        const URL = `http://127.0.0.1:8001/orders/sending_order`
+        const URL = `https://greenfieldlocalhub.onrender.com/orders/sending_order`
         let orderData = {
             "productName": name,
             "quantity": quantity,
@@ -282,7 +282,7 @@ function SettingsPopup() {
         setError("")
         setSuccess("")
 
-        const url = `http://127.0.0.1:8001/accounts/updating_Details`
+        const url = `https://greenfieldlocalhub.onrender.com/accounts/updating_Details`
         let userDetails = {
             "email": email,
             "password": password,
@@ -305,7 +305,7 @@ function SettingsPopup() {
     function deleteUser() {
         setError("")
         setSuccess("")
-        const url = `http://127.0.0.1:8001/accounts/delete_account?userID=${userID}`
+        const url = `https://greenfieldlocalhub.onrender.com/accounts/delete_account?userID=${userID}`
         axios.delete(url)
             .then(() => {
                 setSignedInStatus(false)

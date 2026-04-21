@@ -11,8 +11,8 @@ import { useState } from 'react'
 
 function App() {
 
-  const url1 = `http://127.0.0.1:8001/products/getting_products`
-  const url2 = `http://127.0.0.1:8001/orders/getting_Orders`
+  const url1 = `https://greenfieldlocalhub.onrender.com/products/getting_products`
+  const url2 = `https://greenfieldlocalhub.onrender.com/orders/getting_Orders`
   const { setProductsList, setOrdersList } = useProducts()
   const location = useLocation()
   const [loading, setLoading] = useState(true)

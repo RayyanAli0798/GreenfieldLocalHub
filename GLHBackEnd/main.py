@@ -9,7 +9,7 @@ app = FastAPI()
 #this will make it ONLY this port can access or send data to the backend
 app.add_middleware( 
     CORSMiddleware, 
-    allow_origins=["http://localhost:5173"], 
+    allow_origins=["*"], 
     allow_methods=["*"], 
     allow_headers=["*"], 
 ) 
