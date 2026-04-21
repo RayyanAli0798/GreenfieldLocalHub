@@ -70,6 +70,17 @@
                 }
             }
 
+            >button {
+                width: fit-content;
+                margin: 0 auto;
+                background-color: var(--primary-color);
+                padding: 10px;
+                border-radius: 25px;
+                border: none;
+                border-radius: 20px;
+
+            }
+
 
 
         }
@@ -82,11 +93,6 @@
 
 }
 
-.error-message {
-    color: red;
-    font-weight: 800;
-}
-
 @media only screen and (max-width: 810px) {
     .image-container {
         display: none;
@@ -96,18 +102,6 @@
         margin: 10px;
     }
 }
-
-.delete-account {
-    position: absolute;
-    top: 90%;
-    right: 2.5%;
-    padding: 25px;
-    font-size: large;
-    background-color: red;
-    color: white;
-    border: none;
-}
-
 .submit {
     width: fit-content;
     margin: 0 auto;

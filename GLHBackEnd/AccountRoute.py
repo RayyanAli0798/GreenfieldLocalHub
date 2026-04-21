@@ -116,6 +116,6 @@ def updating_user(updateDetails: UpdateUser):
 
     cleanedValues = {k:v for k,v in updatedData.items() if v is not None and v != ""} #removes empty fields
     update = users.update_one(
-        {"user_ID": cleanedValues["userID"] },
+        {"user_ID": cleanedValues["user_ID"] },
         {"$set": cleanedValues})
     return "success"

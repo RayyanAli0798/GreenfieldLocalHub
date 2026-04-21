@@ -1,10 +1,7 @@
 .products-page {
-    height: 100vh;
-
-
-
+    min-height: 100vh;
     width: 80%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .products-nav {
@@ -14,6 +11,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 15px;
+    min-width: 275px;
 
 }
 
@@ -72,6 +70,23 @@
     color: white;
 }
 
+@media only screen and (max-width: 945px) {
+    .products-nav {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .segmented-control {
+        margin: 0 auto;
+        order: 2;
+    }
+
+    .product-icons {
+        margin: 0 auto;
+        order: 3;
+    }
+}
+
 .product-container {
     background-color: var(--secondary-color);
     width: 275px;
@@ -114,6 +129,7 @@
         width: 50px;
         font-size: xx-large;
         font-weight: 500;
+        cursor: pointer;
 
     }
 
@@ -133,6 +149,7 @@
     border: none;
     background-color: var(--primary-color);
     font-size: x-large;
+    cursor: pointer;
 }
 
 .success-msg {
@@ -143,10 +160,10 @@
 }
 
 .products-section {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 100px;
-    justify-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
 }
 
 .background-blurr {
@@ -159,8 +176,9 @@
     height: 100%;
     width: 320px;
     background-color: var(--primary-color);
-    margin-top: 120px;
+    margin-top: 240px;
     margin-left: auto;
+
 
 }
 
@@ -199,6 +217,7 @@ form {
     gap: 20px;
     flex-wrap: nowrap;
     margin: 10px;
+    height: 75%;
 
     >label {
         display: flex;
@@ -214,4 +233,67 @@ form {
 
         }
     }
+
+    >button {
+        width: fit-content;
+        margin: 10px auto;
+        background-color: var(--secondary-color);
+        padding: 10px 25px;
+        font-size: medium;
+        border-radius: 25px;
+        border: none;
+        border-radius: 20px;
+
+    }
+}
+
+.delete-account {
+    display: flex;
+    margin: 25px auto;
+    padding: 10px 15px;
+    font-size: large;
+    background-color: red;
+    color: white;
+    margin-top: auto;
+    border-radius: 0px;
+    border: 1px solid black;
+}
+
+.error-message {
+    color: red;
+    font-weight: 800;
+}
+
+.success-message {
+    color: green;
+    font-weight: 800;
+}
+
+.basket-menu-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.checkout {
+    margin: 25px auto;
+    font-size: large;
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 15px 25px;
+}
+
+.basket-container {
+    height: 70%;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+.hide-delete{
+    visibility: hidden;
+}
+
+.history-section{
+    height: 75%;
+    overflow: auto;
+    scrollbar-width: thin;
 }

@@ -20,7 +20,7 @@ export function ProductProvider({ children }) {
                 productList.filter((product) => product["producers_ID"] === userID)
             )
             setProducersOrders(
-                orders.filter((product) => product["producer_id"] === userID)
+                orders.filter((product) => product["user_id"] === userID)
             )
         }
     }, [productList, userID])

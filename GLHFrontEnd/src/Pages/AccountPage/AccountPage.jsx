@@ -9,7 +9,8 @@ export default function AccountPage() {
 
     return (
         <div className="account-page-container">
-            <span className="image-container"> <img src={AccountPageImage} alt="Image of a field" /> </span>
+            {/* displays an image for screens big enough, and the account form */}
+            <span className="image-container"> <img src={AccountPageImage} alt="Image of a field" /> </span> 
             <span className="form-container"> <AccountComponent /> </span>
         </div>
     )
@@ -20,6 +21,7 @@ function AccountComponent() {
     const [showRegister, setShowRegister] = useState(true)
 
     function toggleForm() {
+        // changes which form is displayed
         setShowRegister(!showRegister)
     }
 
@@ -35,13 +37,13 @@ function SignUpBox({ toggle }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [accountRole, setAccountRole] = useState("Consumer")
+    const [accountRole, setAccountRole] = useState("")
     const [error, setError] = useState("")
     const navigate = useNavigate()
     const { setSignedInStatus, setUserRole, setUserID } = useUser()
 
     function StoringSignUp(event) {
-        event.preventDefault()
+        event.preventDefault() //stops page from refreshing
         setError("")
 
         const url = `http://127.0.0.1:8001/accounts/creating_account`
@@ -62,7 +64,7 @@ function SignUpBox({ toggle }) {
             setError(err.response?.data?.detail)
         }
 
-        axios.post(url, userDetails)
+        axios.post(url, userDetails) //sends data to backend
             .then(handleSuccess)
             .catch(handleError)
 
@@ -81,8 +83,8 @@ function SignUpBox({ toggle }) {
                     <label> Confirm Password:
                         <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} /></label>
                     <label> Role:
-                        <select onChange={(e) => setAccountRole(e.target.value)} required>
-                            <option hidden disabled selected> </option>
+                        <select onChange={(e) => setAccountRole(e.target.value)} required value={accountRole}>
+                            <option hidden disabled> </option>
                             <option value="Producer" > Producer </option>
                             <option value="Consumer" > Consumer </option>
                         </select>
@@ -111,7 +113,7 @@ function SignInBox({ toggle }) {
     const { setSignedInStatus, setUserRole, setUserID } = useUser()
 
     function StoringSignIn(event) {
-        event.preventDefault()
+        event.preventDefault() // stops refreshing
         setError("")
 
         const url = `http://127.0.0.1:8001/accounts/login`
@@ -130,7 +132,7 @@ function SignInBox({ toggle }) {
             setError(err.response?.data?.detail)
         }
 
-        axios.post(url, userDetails)
+        axios.post(url, userDetails) // sends data to backend
             .then(handleSuccess)
             .catch(handleError)
 

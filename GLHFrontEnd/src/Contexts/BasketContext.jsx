@@ -4,7 +4,7 @@ export const BasketContext = createContext();
 
 export function BasketProvider({ children }) {
 
-    const [currentBasket, setCurrentBasket] = useState("")
+    const [currentBasket, setCurrentBasket] = useState([])
 
     return (
 

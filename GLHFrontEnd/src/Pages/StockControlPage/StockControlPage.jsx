@@ -10,6 +10,7 @@ import PublishIcon from "../../assets/PublishIcon.svg"
 import { useProducts } from "../../Contexts/ProductContext"
 import { useEffect } from "react"
 import HistoryIcon from "../../assets/HistoryIcon.png"
+import { DisplayingProduct } from "../ProductPage/ProductPage"
 
 export default function StockControlPage() {
 
@@ -21,7 +22,6 @@ export default function StockControlPage() {
 
                 {/* 3 dashboard sections are split up */}
                 <StockManagment />
-
 
                 <div className="Dashboard-bottom">
                     <ListedProducts />
@@ -78,13 +78,13 @@ function ListedProducts() {
     return (
         <div className="bottom-products">
             <span className="dashboard-title-bar">
-                <span className="empty-div-stock" /><h2> Listed Products  </h2> 
+                <span className="empty-div-stock" /><h2> Listed Products  </h2>
             </span>
             <div className="products-container">
                 {
                     producerListedList.map((product, key) => {
                         return (
-                            < StockInlineDisplay name={product["product_name"]} cost={product["cost_per_unit"]} quantity={product["quantity_avaliable"]} publish={false} modify={false} ProductID={product["product_ID"]} />
+                            < StockInlineDisplay key={product["product_name"]} name={product["product_name"]} cost={product["cost_per_unit"]} quantity={product["quantity_avaliable"]} publish={false} modify={false} ProductID={product["product_ID"]} />
                         )
                     })
                 }
@@ -96,6 +96,11 @@ function OrdersToComplete() {
     const { producersOrders, setProducersOrders } = useProducts()
     const [compeltedOrders, setCompletedOrders] = useState([])
     const [uncompelteOrders, setUncompletedOrders] = useState([])
+    const [openHistory, setOpenHistory] = useState(false)
+
+    function toggleHistory() {
+        setOpenHistory(!openHistory)
+    }
 
     useEffect(() => {
 
@@ -106,19 +111,22 @@ function OrdersToComplete() {
             producersOrders.filter((orders) => orders["completed_status"] === false)
         )
     }, [producersOrders])
+
     return (
         <div className="bottom-products">
             <span className="dashboard-title-bar">
-                <span className="empty-div-stock" /><h2> To-do  </h2> <img src={HistoryIcon} className="adding-stock-icon" />
+                <span className="empty-div-stock" /><h2> To-do  </h2> <img src={HistoryIcon} className="adding-stock-icon" onClick={toggleHistory} />
             </span>
 
             {
                 uncompelteOrders.map((Order, key) => {
                     return (
-                        <Checkbox name={Order["product_name"]} quantity={Order["quantity"]} paid={Order["total_cost"]} orderID={Order["order_id"]} changingOrderList={setUncompletedOrders} currentOrderList={uncompelteOrders} />
+                        <Checkbox key={Order["product_name"]} name={Order["product_name"]} quantity={Order["quantity"]} paid={Order["total_cost"]} orderID={Order["order_id"]} changingOrderList={setUncompletedOrders} currentOrderList={uncompelteOrders} />
                     )
                 })
             }
+
+            {openHistory ? <OrderHistory data={compeltedOrders} toggle={toggleHistory} /> : null}
         </div>
     )
 }
@@ -315,7 +323,6 @@ function ModifyProduct({ toggle, name1, quantity1, cost1, PID }) {
     )
 }
 
-
 function Checkbox({ name, quantity, paid, orderID, changingOrderList, currentOrderList }) {
     function orderComplete() {
         const url = `http://127.0.0.1:8001/orders/updating_status?orderID=${orderID}`
@@ -332,7 +339,7 @@ function Checkbox({ name, quantity, paid, orderID, changingOrderList, currentOrd
     return (
         <div className="checkbox-inline">
             <div className="order-data">
-                <p className="checkbox-title"> {name }  </p>
+                <p className="checkbox-title"> {name}  </p>
                 <p className="checkbox-title"> Quantity: {quantity}  </p>
                 <p className="checkbox-title"> Price: £{paid}  </p>
             </div>
@@ -341,6 +348,22 @@ function Checkbox({ name, quantity, paid, orderID, changingOrderList, currentOrd
     )
 }
 
-function OrderHistory() {
+function OrderHistory({ data, toggle }) {
 
+
+    return (
+        <div className="background-blurr">
+
+            <div className="history-section">
+                <h2> Order History! <img src={CloseIcon} onClick={toggle} className="adding-stock-icon" /> </h2>
+                {
+                    data.map((orderItem, key) => {
+                        return (
+                            <DisplayingProduct key={orderItem["product_name"]} ProductName={orderItem["product_name"]} ProductID={orderItem["product_id"]} ProductPrice={orderItem["total_cost"]} ProductQuantity={orderItem["quantity"]} deleteHidden={true} />
+                        )
+                    })
+                }
+            </div>
+        </div>
+    )
 }

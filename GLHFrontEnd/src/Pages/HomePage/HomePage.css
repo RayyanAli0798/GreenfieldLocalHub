@@ -15,7 +15,7 @@
     position: absolute;
     width: 100%;
     top: 15%;
-    margin: 0 auto;
+    margin: 15px auto;
     z-index: 1;
 
     color: var(--secondary-color);
@@ -30,7 +30,7 @@
 .about-us {
     min-width: 300px;
     max-width: 700px;
-    
+
     height: fit-content;
     margin: 25px auto;
     padding: 50px;
@@ -90,7 +90,7 @@
 #slideshow-container {
     position: relative;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 
 #slideshow-container img {
@@ -113,6 +113,23 @@
 #arrows img {
     width: clamp(20px, 6vw, 40px);
 }
-#slideshow-image{
+
+#slideshow-image {
     justify-self: center;
+}
+
+@media only screen and (max-width:630px) {
+    #slideshow-container img {
+        scale: 80%;
+    }
+}
+@media only screen and (max-width:515px) {
+    #slideshow-container img {
+        scale: 60%;
+    }
+}
+@media only screen and (max-width:405px) {
+    #slideshow-container img {
+        scale: 40%;
+    }
 }

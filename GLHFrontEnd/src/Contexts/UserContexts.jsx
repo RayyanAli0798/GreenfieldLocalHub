@@ -4,7 +4,7 @@ export const userContext = createContext();
 
 export function UserProvider({ children }) {
 
-    const [signedInStatus, setSignedInStatus] = useState(true)
+    const [signedInStatus, setSignedInStatus] = useState(false)
     const [userRole, setUserRole] = useState("")
     const [userID, setUserID] = useState("")
     return (
