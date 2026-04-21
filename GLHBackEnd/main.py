@@ -9,7 +9,7 @@ app = FastAPI()
 #this will make it ONLY this port can access or send data to the backend
 app.add_middleware( 
     CORSMiddleware, 
-    allow_origins=["*"], 
+    allow_origins=["https://greenfieldlocalhub-hn5p.onrender.com/"], 
     allow_methods=["*"], 
     allow_headers=["*"], 
 ) 
